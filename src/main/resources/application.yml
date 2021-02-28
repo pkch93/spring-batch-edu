@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: batch-edu
+  batch:
+    job:
+      enabled: true
+      names: ${job.name:NONE}
+    initialize-schema: always
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:6025/mysql?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1234
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+---
+spring:
+  profiles: test
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
